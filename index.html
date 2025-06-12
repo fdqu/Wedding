@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <link link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://d1mviimjnzagon.cloudfront.net/fonts/marjorie-italic/v1/marjorie-italic.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nixie+One"/>
     <link rel="stylesheet" href="https://d1mviimjnzagon.cloudfront.net/fonts/albori-regular/v1/albori-regular.css"/>
@@ -81,7 +81,7 @@
 
             --navigation-text-color: #304665;
             
-            --heading-font-family: 'Alumni Sans Pinstripe', sans-serif; 
+            --heading-font-family: 'caveat', sans-serif; 
             --body-font-family: 'Lato', sans-serif; 
             --ampersand-font-family: 'Dancing Script', sans-serif; 
             --title-font-family: 'amatic', sans-serif; 
@@ -92,7 +92,7 @@
             --salutation-font-family: 'albori-regular', sans-serif; 
             
             --primary-line-height: 1.2em;
-            --primary-font-size: 3.2em;
+            --primary-font-size: 4em;
             --tertiary-font-size: 1.3em;
             --title-font-size: 2em;
             --in-section-subtitle-font-size: 1.32em;
@@ -222,7 +222,7 @@
             font-family: var(--primary-font-family);
             font-size: var(--primary-font-size);
             line-height: var(--primary-line-height);
-            font-weight: 1300; 
+            font-weight: 900; 
             margin: 1em 0;
             min-width: fit-content;
             transition: font-size 0.05s ease-in-out;
@@ -233,7 +233,7 @@
             font-family: var(--ampersand-font-family);
             font-size: 0.5em;
             vertical-align: middle;
-            font-weight: 1300;
+            font-weight: 700;
             padding: 0 0.1em;
         }
         
@@ -478,15 +478,15 @@
         .location-info h3 {
             font-family: var(--body-font-family);
             color: var(--cover-text-color); 
-            font-size: 1.7em;
+            font-size: 1.5em;
             margin-top: 0;
-            margin-bottom: 30px;
-            font-weight: 100;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .location-info p {
             margin-bottom: 10px;
-            font-size: 1em;
+            font-size: 1.2em;
         }
 
         .location-map {
@@ -514,7 +514,7 @@
             font-family: var(--body-font-family);
             color: var(--body-text-color);
             margin-bottom: 30px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -524,8 +524,20 @@
         .DressCodeSection__Note {
             margin-top: 30px;
             font-style: lato;
-            font-size: 0.95em;
+            font-size: 0.9em;
         }
+        #DressCodeSection__Note p {
+    font-size: 1.2em; /* Измените это значение на желаемый размер */
+    /* Например:
+    font-size: 16px;  -- если вы хотите в пикселях
+    font-size: 1.1em; -- если вы хотите немного больше, чем текущий базовый
+    font-size: 0.9em; -- если вы хотите немного меньше
+    */
+    line-height: 1.5; /* Возможно, захотите скорректировать межстрочный интервал */
+    text-align: center
+    font-weight: initial
+
+}
 
         .DressCodeSection__Colors {
             display: flex;
@@ -559,75 +571,111 @@
             opacity: 0.8;
         }
 
-        /* --- Стили для секции "Контакты" --- */
         #contacts-section {
-            background-color: var(--section-bg-color);
-            padding: 80px 0;
-        }
+    background-color: var(--section-bg-color);
+    padding: 80px 0;
+}
 
-        .contacts-wrapper {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
+.contacts-wrapper {
+    display: flex;
+    justify-content: center; /* ЭТОТ СТИЛЬ ЦЕНТРИРУЕТ contact-card ПО ГОРИЗОНТАЛИ */
+    flex-wrap: wrap;
+    gap: 40px;
+    /* text-align: center; */ /* УДАЛИТЬ: это неэффективно для центрирования flex-элементов */
+}
 
-        ..contact-card {
-            background: transparent; 
-            padding: 30px;
-            border-radius: 0; 
-            box-shadow: none; 
-            width: 100%;
-            max-width: 400px;
-            font-family: var(--body-font-family);
-            color: var(--body-text-color);
-            /* Изменено: Убираем justify-content, так как теперь выравнивание будет через text-align */
-            /* justify-content: flex-start; */ /* УДАЛЕНО */
-            text-align: center; /* Центрируем все содержимое карточки (заголовок, contact-item) */
-        }
+.contact-card {
+    background: transparent; 
+    padding: 30px;
+    border-radius: 0; 
+    box-shadow: none; 
+    width: 100%;
+    max-width: 400px;
+    font-family: var(--body-font-family);
+    color: var(--body-text-color);
+    text-align: center; /* Это центрирует текст (например, заголовок h3) внутри карточки */
+}
 
-        .contact-card h3 {
-            font-family: var(--heading-font-family);
-            color: var(--cover-text-color); 
-            text-align: center; /* Центрируем заголовок */
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-            font-weight: initial;
-        }
+.contact-card h3 {
+    font-family: var(--heading-font-family);
+    color: var(--cover-text-color); 
+    text-align: center; /* Центрирует заголовок */
+    margin-bottom: 10px;
+    font-size: 1.7rem;
+    font-weight: initial;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            /* УДАЛЕНО: justify-content для десктопа, так как родительская карточка уже центрируется */
-            /* justify-content: flex-start; */ /* УДАЛЕНО */
-            justify-content: center; /* Добавлено для центрирования на десктопе тоже */
-            text-align: left; /* Это влияет на текст внутри contact-details, но не на позицию самого contact-item */
-        }
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
+.contact-item {
+    display: flex;
+    align-items: center; /* Выравнивает элементы по центру по вертикали (иконка и contact-details) */
+    margin-bottom: 20px;
+    justify-content: center; /* ЦЕНТРИРУЕТ СОДЕРЖИМОЕ contact-item (иконка + contact-details) ПО ГОРИЗОНТАЛИ */
+    /* text-align: center; */ /* УДАЛИТЬ: это неэффективно здесь */
+}
+.contact-item:last-child {
+    margin-bottom: 0;
+}
 
-        .contact-icon-circle {
-           background-color: var(--cover-joiner-color); 
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0; 
-        }
+.contact-icon-circle {
+   background-color: var(--cover-joiner-color); 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0; 
+}
 
-        .contact-icon-circle i {
-            color: var(--icon-color);
-            font-size: 1.2rem;
-            width: 1.2em; 
-            text-align: center; 
-            display: inline-block; 
-            line-height: 1.2rem; 
-        }
+.contact-icon-circle i {
+    color: var(--icon-color);
+    font-size: 1.2rem;
+    width: 1.2em; 
+    text-align: center; 
+    display: inline-block; 
+    line-height: 1.2rem; 
+}
+
+.contact-details {
+    display: flex;          
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; /* ИЗМЕНЕНО: ЦЕНТРИРУЕТ СОДЕРЖИМОЕ contact-details ПО ГОРИЗОНТАЛИ (имя и ссылка) */
+    gap: 3px; 
+    width: 100%; 
+}
+
+.contact-details p {
+    font-weight: 600;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    color: #333; 
+    line-height: 1.2; 
+    text-align: center; /* ДОБАВЛЕНО: Для текста имени, если нужно строго по центру */
+}
+
+.contact-details a {
+    color: var(--link-contact-color); 
+    text-decoration: none;
+    display: flex;
+    align-items: center; 
+    gap: 5px;
+    justify-content: center; /* ДОБАВЛЕНО: Для центрирования самой ссылки с иконкой */
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+.contact-details a i.fab.fa-telegram {
+    color: var(--link-telegram-color); 
+    margin-right: 8px; 
+    font-size: 1.2rem;
+    line-height: 1; 
+    vertical-align: middle; 
+}
+
 
         
 /* Стиль для родительского контейнера contact-details */
@@ -746,7 +794,7 @@
                         <div class="AvatarImage__ImageContainer">
                             <img src="images/avatar.png?width=400&height=auto" style="min-width:100%;min-height:100%;object-fit:cover;opacity:0.01;transition:opacity 0.5s linear;width:100%" onload="this.style.opacity=1"/>
                         </div>
-                        <h1 class="Header__Names" id="names">Федор<span class="Header__AmpersandText"> & </span>Елена</h1>
+                        <h1 class="Header__Names" id="names">Федор и Елена</h1>
                         <h3 class="Header__Date">12/07/25</h3>
                     </div>
                 </div>
@@ -874,7 +922,7 @@
             </div>
 
 
-            <div class ="SectionWrapper__Container" id ="dresscode-section">
+            <div class ="SectionWrapper__Container" id ="DressCodeSection__Note">
                 <p> Дорогие гости, просим не дарить цветы - они прекрасны, но быстро вянут. 
                         Лучше подарите нам свои улыбки - они останутся с нами навсегда 😊
                 </p>     
