@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+    <link link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://d1mviimjnzagon.cloudfront.net/fonts/marjorie-italic/v1/marjorie-italic.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nixie+One"/>
     <link rel="stylesheet" href="https://d1mviimjnzagon.cloudfront.net/fonts/albori-regular/v1/albori-regular.css"/>
@@ -47,7 +47,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <style>
-        body {margin: 0; padding: 0; font-size: 16px;}
+        html { font-size: 16px; } /* Добавлено: Базовый размер для rem */
+        body { margin: 0; padding: 0; font-size: 1em; } /* Изменено: font-size на 1em */
         ::-webkit-input-placeholder {color: #ccc;}
         ::-moz-placeholder {color: #ccc;}
         
@@ -61,7 +62,7 @@
         }
         
         .DesignProvider__Container {
-            font-size: 13px;
+            /* font-size: 13px; УДАЛЕНО: Использование rem/em теперь отталкивается от html */
             line-height: 1.2;
             min-height: 100vh;
             width: 100%;
@@ -132,7 +133,7 @@
             justify-content: center;
             overflow: hidden;
             width: 30em;
-            margin-top: 15em;** /* Добавлено для смещения вниз */
+            margin-top: 15em;
         }
         
         .Header__Container {
@@ -476,9 +477,9 @@
         .location-info h3 {
             font-family: var(--heading-font-family);
             color: var(--cover-text-color); 
-            font-size: 1.8em;
+            font-size: 1.6em;
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-weight: 400;
         }
 
@@ -579,23 +580,25 @@
             max-width: 400px;
             font-family: var(--body-font-family);
             color: var(--body-text-color);
-            text-align: center;
+            /* Изменено: Выравниваем содержимое карточки по левому краю */
+            justify-content: flex-start; 
         }
 
         .contact-card h3 {
             font-family: var(--heading-font-family);
             color: var(--cover-text-color); 
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-            font-weight: 400;
+            /* Изменено: Выравниваем заголовок по левому краю */
+            text-align: left; 
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            font-weight: initial;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            justify-content: center;
+            /* УДАЛЕНО: justify-content: center; для десктопа */
             text-align: left;
         }
         .contact-item:last-child {
@@ -603,7 +606,7 @@
         }
 
         .contact-icon-circle {
-            background-color: var(--cover-text-color); 
+           background-color: var(--cover-joiner-color); /* Использование акцентного цвета для круга */
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -611,35 +614,59 @@
             align-items: center;
             justify-content: center;
             margin-right: 15px;
+            flex-shrink: 0; /* Предотвращает сжатие круга */
         }
 
         .contact-icon-circle i {
             color: var(--icon-color);
             font-size: 1.2rem;
+            width: 1.2em; /* Устанавливаем ширину, чтобы она была равна font-size */
+            text-align: center; /* Центрируем содержимое i внутри его новой ширины */
+            display: inline-block; /* Позволяет применять width и text-align */
+            line-height: 1.2rem; /* Убедимся, что вертикальное выравнивание стабильно */
         }
 
-        .contact-details p {
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
+        
+/* Стиль для родительского контейнера contact-details */
+.contact-details {
+    display: flex;          /* Делаем flex-контейнером */
+    flex-direction: column; /* Элементы будут располагаться по вертикали */
+    justify-content: center; /* Центрируем содержимое по вертикали относительно родительского contact-item */
+    align-items: flex-start; /* Выравниваем элементы по левому краю внутри contact-details */
+    gap: 3px; /* Это более контролируемый способ добавить отступ, чем margin-bottom */
+    width: 100%; /* Добавлено: Занимаем всю доступную ширину */
+}
 
-        .contact-details a {
-            color: var(--link-contact-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
+/* Стили для параграфа с именем */
+.contact-details p {
+    font-weight: 600;
+    margin-bottom: 0; /* <-- Устанавливаем в 0, так как gap теперь управляет отступом */
+    font-size: 1.1rem;
+    color: #333; 
+    line-height: 1.2; 
+}
 
-        .contact-details a:hover {
-            text-decoration: underline;
-        }
+/* Стили для ссылки Telegram */
+.contact-details a {
+    color: var(--link-contact-color); 
+    text-decoration: none;
+    display: flex;
+    align-items: center; 
+    gap: 5px; /* Здесь не нужен gap, так как он уже есть в contact-details для его прямых потомков */
+}
 
-        .contact-details a i.fab.fa-telegram {
-            color: var(--link-telegram-color);
-            margin-right: 8px;
-            font-size: 1.2rem;
-        }
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для самой иконки Telegram */
+.contact-details a i.fab.fa-telegram {
+    color: var(--link-telegram-color); 
+    margin-right: 8px; 
+    font-size: 1.2rem;
+    line-height: 1; 
+    vertical-align: middle; 
+}
 
         /* Медиа-запросы для адаптивности */
         @media (max-width: 767px) {
@@ -658,16 +685,23 @@
                 flex-direction: column;
                 text-align: center;
                 margin-bottom: 25px;
+                /* Изменено: Выравниваем весь блок contact-item по центру на мобильных */
+                justify-content: center;
+                align-items: center; /* Добавлено, чтобы иконка и текст были по центру по вертикали */
             }
             .contact-icon-circle {
                 margin-bottom: 10px;
                 margin-right: 0;
             }
+            .contact-details {
+                /* На мобильных, если contact-item column, contact-details должен быть по центру */
+                align-items: center; 
+            }
             .contact-details p {
-                text-align: center;
+                text-align: center; /* Изменено на center для мобильных */
             }
             .contact-details a {
-                justify-content: center;
+                justify-content: center; /* Изменено на center для мобильных */
             }
             /* Адаптивность для дресс-кода */
             .color-swatch {
@@ -684,7 +718,7 @@
             .AvatarImage__ImageContainer {
                 height: 12em; 
                 width: 12em;
-                **margin-top: 1em;** /* Немного меньше отступ для мобильных */
+                margin-top: 1em; 
             }
         }
     </style>
@@ -795,7 +829,7 @@
 
             <div class="SectionWrapper__Container" id="dresscode-section">
                 <h2 class="GenericContent__Title">Дресс-код</h2>
-                <p class="DressCodeSection__Description">Мы будем очень рады, если вы поддержите нашу цвета нашей свадьбы в своих нарядах:</p>
+                <p class="DressCodeSection__Description">Мы будем очень рады, если вы поддержите цвета нашей свадьбы в своих нарядах:</p>
                 <div class="DressCodeSection__Colors">
                     <div class="color-swatch" style="background-color: #c55b27;">
                         <span class="color-hex"></span>
@@ -834,66 +868,56 @@
             
 
             <div class="SectionWrapper__Container" id="contacts-section">
-                <h2 class="GenericContent__Title">Контакты</h2>
-                
-                <div class="contacts-wrapper">
-                    <div class="contact-card">
-                        <h3>Организаторы</h3>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon-circle">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="contact-details">
-                                <p>Алёна</p>
-                                <a href="https://t.me/sufle_event" target="_blank">
-                                    <i class="fab fa-telegram"></i>
-                                    @sufle_event
-                                </a>
-                            </div>
+            <h2 class="GenericContent__Title">Контакты</h2>
+            
+            <div class="contacts-wrapper">
+                <div class="contact-card">
+                    <h3>Организаторы</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon-circle">
+                            <i class="fas fa-user"></i>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon-circle">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="contact-details">
-                                <p>Юлианна</p>
-                                <a href="https://t.me/rzaeva_yul" target="_blank">
-                                    <i class="fab fa-telegram"></i>
-                                    @rzaeva_yul
-                                </a>
-                            </div>
+                        <div class="contact-details">
+                            <p>Алёна</p>
+                            <a href="https://t.me/sufle_event" target="_blank">
+                                <i class="fab fa-telegram"></i>
+                                @sufle_event
+                            </a>
                         </div>
                     </div>
                     
-                    <div class="contact-card">
-                        <h3>Ведущий</h3>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon-circle">
-                                <i class="fas fa-microphone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <p>Женя</p>
-                                <a href="https://t.me/e_kalashnikovv" target="_blank">
-                                    <i class="fab fa-telegram"></i>
-                                    @e_kalashnikovv
-                                </a>
-                            </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-circle">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="contact-details">
+                            <p>Юлианна</p>
+                            <a href="https://t.me/rzaeva_yul" target="_blank">
+                                <i class="fab fa-telegram"></i>
+                                @rzaeva_yul
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>Ведущий</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon-circle">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <p>Женя</p>
+                            <a href="https://t.me/e_kalashnikovv" target="_blank">
+                                <i class="fab fa-telegram"></i>
+                                @e_kalashnikovv
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="Footer__Wrapper">
-            <div>
-                <a href="https://sayi.do?utm_source=sayido&utm_medium=wedding-website&utm_campaign=120725&referred_by=Федор,Елена"></a>
-            </div>
-        </div>
-    </div>
-
-    
 </body>
 </html>
