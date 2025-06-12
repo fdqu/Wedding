@@ -783,7 +783,25 @@
                 margin-top: 10em; 
             }
         }
-    </style>
+    
+html, body {
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.location-map iframe {
+    max-width: 100%;
+    display: block;
+}
+</style>
 </head>
 <body>
     <div class="DesignProvider__Container">
