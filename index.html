@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <link link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://d1mviimjnzagon.cloudfront.net/fonts/marjorie-italic/v1/marjorie-italic.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nixie+One"/>
     <link rel="stylesheet" href="https://d1mviimjnzagon.cloudfront.net/fonts/albori-regular/v1/albori-regular.css"/>
@@ -91,7 +92,7 @@
             --salutation-font-family: 'albori-regular', sans-serif; 
             
             --primary-line-height: 1.2em;
-            --primary-font-size: 3.8em;
+            --primary-font-size: 3.2em;
             --tertiary-font-size: 1.3em;
             --title-font-size: 2em;
             --in-section-subtitle-font-size: 1.32em;
@@ -127,13 +128,13 @@
         .AvatarImage__ImageContainer {
             align-items: center;
             background: transparent;
-            border-radius: calc(11em * 2); 
+            border-radius: calc(16em * 2); 
             display: inline-flex;
             height: 30em; 
             justify-content: center;
             overflow: hidden;
             width: 30em;
-            margin-top: 15em;
+            margin-top: 12em;
         }
         
         .Header__Container {
@@ -221,7 +222,7 @@
             font-family: var(--primary-font-family);
             font-size: var(--primary-font-size);
             line-height: var(--primary-line-height);
-            font-weight: 800; 
+            font-weight: 1300; 
             margin: 1em 0;
             min-width: fit-content;
             transition: font-size 0.05s ease-in-out;
@@ -230,9 +231,9 @@
         .Header__AmpersandText {
             color: var(--cover-joiner-color); 
             font-family: var(--ampersand-font-family);
-            font-size: 0.9em;
+            font-size: 0.5em;
             vertical-align: middle;
-            font-weight: 700;
+            font-weight: 1300;
             padding: 0 0.1em;
         }
         
@@ -471,16 +472,16 @@
             text-align: left;
             color: var(--body-text-color);
             font-family: var(--body-font-family);
-            line-height: 1.6;
+            line-height: 2;
         }
 
         .location-info h3 {
-            font-family: var(--heading-font-family);
+            font-family: var(--body-font-family);
             color: var(--cover-text-color); 
-            font-size: 1.6em;
+            font-size: 1.7em;
             margin-top: 0;
-            margin-bottom: 20px;
-            font-weight: 400;
+            margin-bottom: 30px;
+            font-weight: 100;
         }
 
         .location-info p {
@@ -571,7 +572,7 @@
             gap: 40px;
         }
 
-        .contact-card {
+        ..contact-card {
             background: transparent; 
             padding: 30px;
             border-radius: 0; 
@@ -580,15 +581,15 @@
             max-width: 400px;
             font-family: var(--body-font-family);
             color: var(--body-text-color);
-            /* Изменено: Выравниваем содержимое карточки по левому краю */
-            justify-content: flex-start; 
+            /* Изменено: Убираем justify-content, так как теперь выравнивание будет через text-align */
+            /* justify-content: flex-start; */ /* УДАЛЕНО */
+            text-align: center; /* Центрируем все содержимое карточки (заголовок, contact-item) */
         }
 
         .contact-card h3 {
             font-family: var(--heading-font-family);
             color: var(--cover-text-color); 
-            /* Изменено: Выравниваем заголовок по левому краю */
-            text-align: left; 
+            text-align: center; /* Центрируем заголовок */
             margin-bottom: 10px;
             font-size: 1.4rem;
             font-weight: initial;
@@ -598,15 +599,17 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            /* УДАЛЕНО: justify-content: center; для десктопа */
-            text-align: left;
+            /* УДАЛЕНО: justify-content для десктопа, так как родительская карточка уже центрируется */
+            /* justify-content: flex-start; */ /* УДАЛЕНО */
+            justify-content: center; /* Добавлено для центрирования на десктопе тоже */
+            text-align: left; /* Это влияет на текст внутри contact-details, но не на позицию самого contact-item */
         }
         .contact-item:last-child {
             margin-bottom: 0;
         }
 
         .contact-icon-circle {
-           background-color: var(--cover-joiner-color); /* Использование акцентного цвета для круга */
+           background-color: var(--cover-joiner-color); 
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -614,17 +617,28 @@
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            flex-shrink: 0; /* Предотвращает сжатие круга */
+            flex-shrink: 0; 
         }
 
         .contact-icon-circle i {
             color: var(--icon-color);
             font-size: 1.2rem;
-            width: 1.2em; /* Устанавливаем ширину, чтобы она была равна font-size */
-            text-align: center; /* Центрируем содержимое i внутри его новой ширины */
-            display: inline-block; /* Позволяет применять width и text-align */
-            line-height: 1.2rem; /* Убедимся, что вертикальное выравнивание стабильно */
+            width: 1.2em; 
+            text-align: center; 
+            display: inline-block; 
+            line-height: 1.2rem; 
         }
+
+        
+/* Стиль для родительского контейнера contact-details */
+.contact-details {
+    display: flex;          
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; /* Оставляем flex-start, чтобы имя и ссылка были слева друг от друга */
+    gap: 3px; 
+    width: 100%; 
+}
 
         
 /* Стиль для родительского контейнера contact-details */
@@ -716,9 +730,9 @@
             }
             /* Адаптивность для аватара на мобильных */
             .AvatarImage__ImageContainer {
-                height: 12em; 
-                width: 12em;
-                margin-top: 1em; 
+                height: 25em; 
+                width: 25em;
+                margin-top: 10em; 
             }
         }
     </style>
